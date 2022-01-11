@@ -9,7 +9,7 @@ Code to incorporate staggered treatment adoption (based on appendix from Arkhang
 This is meant solely for applying synthetic difference-in-difference methods to staggered treatment timing settings
 
 
-### This code is still in a early Beta version and has the following issues/ concerns (Help addressing them would be greatly appreciated):
+### This code is still in an early Beta version and has the following issues/ concerns (Help addressing them would be greatly appreciated):
 
 1) I have not yet incorporated or looked into the xsynthdid methods for covariates
 2) Per the comment from the synthdid package author (David Hishberg, also one of the paper's authors) at least two time periods before the initial treatment are needed to use the synthdid method. Because of this, in the case where two periods do not exist before the first treatment period, the program will treat those initially treated/period one treated/period two treated as untreated controls. This staggered treatment timing synthdid method is not appropriate for all settings. 
