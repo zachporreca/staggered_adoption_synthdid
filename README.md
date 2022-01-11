@@ -24,3 +24,5 @@ Inputs (aside from data) are column <b>numbers</b>. The input is of the followin
 staggered_synth_DID(data, initial_treat_var, untreated, outcome_var,   unit, treatment_var, time_var)
 
 Once again, data refers to the data source's name and the remainder of variables refer to the variable column number. 
+
+AUthor: Zachary Porreca @zachporreca
