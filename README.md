@@ -1,8 +1,8 @@
 ## staggered_adoption_synthdid
 
-Original 1/11/21
+Original 1/11/22
 
-Most recent update 1/11/21
+Most recent update 1/11/22
 
 Code to incorporate staggered treatment adoption (based on appendix from Arkhangelsky et al. 2021) into synthdid package
 
