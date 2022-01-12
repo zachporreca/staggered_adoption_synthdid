@@ -84,6 +84,6 @@ print(paste0("ATT= ",overall_estimator, ifelse(overall_p < .05 & overall_p > .01
 print(paste0("SE= ", overall_se))
 print(paste0("p= ", overall_p))
 print(paste0("95% CI: (",lower_95_CI,", ",upper_95_CI,")"))
-print("???p<0.1; ??????p<0.05; ?????????p<0.01")
+print("*p<0.1; **p<0.5, ***p<0.01")
 return(result_matrix)
 }
