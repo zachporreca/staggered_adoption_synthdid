@@ -25,5 +25,8 @@ staggered_synth_DID(data, initial_treat_var, untreated, outcome_var,   unit, tre
 
 Once again, data refers to the data source's name, untreated refers to the value assigned in the treatment column to untreated units, and the remainder of variables refer to the variable column number. 
 
+
+##UPDATE
+New file uploaded to jackknife standard errors (rather than relying on the previous weighting sceheme)...VERY SLOW though
 AUthor: Zachary Porreca @zachporreca
 Contributions by Kyle Butts @kylefbutts
