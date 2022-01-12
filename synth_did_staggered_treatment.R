@@ -18,7 +18,8 @@
 #' 
 staggered_synth_DID = function(data, initial_treat_var, untreated, 
                                outcome_var, unit, treatment_var, time_var) {
-    
+    data[,treatment_var]=ifelse(data[,treatment_var]==untreated, 0, data[,treatment_var])
+    untreated=0
     treated_periods <- unique(data[which(data[, initial_treat_var] > 0), initial_treat_var])
     treated_periods <- treated_periods[which(treated_periods > min(data[, time_var]) + 1)]
     
