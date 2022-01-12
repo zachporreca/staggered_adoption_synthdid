@@ -55,12 +55,16 @@ staggered_synth_DID = function(data, initial_treat_var, untreated,
     # FOR NOW SE WILL BE CALCULATED THROUGH SIMILIAR WEIGHTING- LITERATURE NEEDS TO RESOLVE THIS. METHOD HERE LIKELY WRONG
     overall_estimator <- sum(result_matrix[, 6] * result_matrix[, 2])
     overall_se <- sum(result_matrix[, 6] * result_matrix[, 3])
+    overall_p=2*pt(q=sqrt(((overall_estimator/overall_se)^2)), df=(nrow(data)-length(unique(data[,time_var]))-length(unique(data[,unit]))), lower.tail=FALSE)
     lower_95_CI <- overall_estimator - (1.96 * overall_se)
     upper_95_CI <- overall_estimator + (1.96 * overall_se)
     
-    print(paste0("ATT= ", overall_estimator))
+      print(paste0("ATT= ",overall_estimator, ifelse(overall_p < .05 & overall_p > .01,"**",
+                                                   ifelse(overall_p < .1 & overall_p > .05,"*",
+                                                          ifelse(overall_p < .01,"***","")))))
     print(paste0("SE= ", overall_se))
+    print(paste0("p= ", overall_p))
     print(paste0("95% CI: (", lower_95_CI, ", ", upper_95_CI, ")"))
-    
+    print("∗p<0.1; ∗∗p<0.05; ∗∗∗p<0.01")
     return(result_matrix)
   }
