@@ -28,5 +28,7 @@ Once again, data refers to the data source's name, untreated refers to the value
 
 ##UPDATE
 New file uploaded to jackknife standard errors (rather than relying on the previous weighting sceheme)...VERY SLOW though
+
 AUthor: Zachary Porreca @zachporreca
+
 Contributions by Kyle Butts @kylefbutts
