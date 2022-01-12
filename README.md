@@ -2,7 +2,7 @@
 
 Original 1/11/22
 
-Most recent update 1/11/22
+Most recent update 1/12/22
 
 Code to incorporate staggered treatment adoption (based on appendix from Arkhangelsky et al. 2021) into synthdid package
 
@@ -19,10 +19,10 @@ This is meant solely for applying synthetic difference-in-difference methods to 
 
 
 ### Use
-Inputs (aside from data) are column <b>numbers</b>. The input is of the following format:
+Inputs (aside from data and untreated) are column <b>numbers</b>. The input is of the following format:
 
 staggered_synth_DID(data, initial_treat_var, untreated, outcome_var,   unit, treatment_var, time_var)
 
-Once again, data refers to the data source's name and the remainder of variables refer to the variable column number. 
+Once again, data refers to the data source's name, untreated refers to the value assigned in the treatment column to untreated units, and the remainder of variables refer to the variable column number. 
 
 AUthor: Zachary Porreca @zachporreca
