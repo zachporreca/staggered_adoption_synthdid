@@ -5,8 +5,7 @@
 #' @param data Data.frame
 #' @param initial_treat_var Numeric. Column number containing initial treatment 
 #'   time period.
-#' @param untreated Numeric. Column number for untreated 0/1 variable. = 1 if 
-#'   the unit is untreated
+#' @param untreated Numeric. Value assigned in treatment_var column to untreated units
 #' @param outcome_var Numeric. Column number for y variable
 #' @param unit Numeric. Column number for variable that identifies each unit
 #' @param treatment_var Numeric. Column number for 0/1 variable. = 1 if unit is 
