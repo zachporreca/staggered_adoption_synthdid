@@ -40,7 +40,7 @@ staggered_synth_DID = function(data, initial_treat_var, untreated,
       
       result_matrix[i, 1] <- treated_periods[i]
       result_matrix[i, 2] <- as.numeric(tau_hat)
-      result_matrix[i, 3] <- sqrt(vcov(tau_hat, method = "jackknife"))
+      result_matrix[i, 3] <- sqrt(vcov(tau_hat, method = "placebo"))
       result_matrix[i, 4] <- result_matrix[i, 2] - (1.96 * result_matrix[i, 3])
       result_matrix[i, 5] <- result_matrix[i, 2] + (1.96 * result_matrix[i, 3])
       result_matrix[i, 6] <- nrow(subbed[which(subbed$post_treat == 1), ])
@@ -51,9 +51,9 @@ staggered_synth_DID = function(data, initial_treat_var, untreated,
     result_matrix$weight <- result_matrix[, 6] / sum(result_matrix[, 6])
     result_matrix[, 6] <- NULL
 
-    # FOR NOW SE WILL BE CALCULATED THROUGH SIMILIAR WEIGHTING- LITERATURE NEEDS TO RESOLVE THIS. METHOD HERE LIKELY WRONG
+    # SE IS NOW CORRECT: USING V[ax+By]=a^2V[x]+b^2V[y]
     overall_estimator <- sum(result_matrix[, 6] * result_matrix[, 2])
-    overall_se <- sum(result_matrix[, 6] * result_matrix[, 3])
+    overall_se=sqrt(sum((result_matrix[,6]^2)*result_matrix[,3]^2))
     overall_p=2*pt(q=sqrt(((overall_estimator/overall_se)^2)), df=(nrow(data)-length(unique(data[,time_var]))-length(unique(data[,unit]))), lower.tail=FALSE)
     lower_95_CI <- overall_estimator - (1.96 * overall_se)
     upper_95_CI <- overall_estimator + (1.96 * overall_se)
