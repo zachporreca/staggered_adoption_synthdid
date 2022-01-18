@@ -2,7 +2,7 @@
 
 Original 1/11/22
 
-Most recent update 1/12/22
+Most recent update 1/18/22
 
 Code to incorporate staggered treatment adoption (based on appendix from Arkhangelsky et al. 2021) into synthdid package
 
@@ -28,6 +28,8 @@ Once again, data refers to the data source's name, untreated refers to the value
 
 ##UPDATE
 New file uploaded to jackknife standard errors (rather than relying on the previous weighting sceheme)...VERY SLOW though
+Standard errors are now calculated (in base file) by placebo method and then aggregated using formula V[aX+By]=a^2V[x]+B^2V[y]
+Vignette in progress and covariates coded, will upload soon 01/18/22
 
 AUthor: Zachary Porreca @zachporreca
 
