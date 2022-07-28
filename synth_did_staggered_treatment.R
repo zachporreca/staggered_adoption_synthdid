@@ -1,7 +1,8 @@
 #' Staggered Synthetic Difference-in-Differences
 #' @description Following the methods described in the appendix 
-#'   of Arkhangelsky et al. (2021)
-#'   
+#'   of Arkhangelsky et al. (2021) and Porreca (2022)
+#' 
+#' At least two pre-periods where no units are treated are required.
 #' @param data Data.frame
 #' @param untreated Numeric. Value assigned in treatment_var column to untreated units
 #' @param outcome_var Numeric. Column number for y variable
@@ -13,8 +14,11 @@
 #' @return Data.frame containing estimates for each treatment_period. Containing
 #'   point estimates, standard error, and confidence intervals.
 #' 
+
+
+
 staggered_synth_DID <- 
-  function(data, untreated, outcome_var,   unit, treatment_var, time_var){
+  function(data, untreated, outcome_var, unit, treatment_var, time_var){
     attach(data)
     
     #Creating initial treatment time variable
@@ -49,9 +53,9 @@ staggered_synth_DID <-
       subbed[,ncol(subbed)+1]=0
       colnames(subbed)[ncol(subbed)]="post_treat"
       subbed$post_treat=ifelse(subbed[,time_var]>=subbed[,initial_treat_var] & subbed[,initial_treat_var]!=0, 1, 0)
-      setup=panel.matrices(subbed, unit=unit, time=time_var, 
+      setup=synthdid::panel.matrices(subbed, unit=unit, time=time_var, 
                            outcome = outcome_var, treatment = "post_treat")
-      tau_hat=synthdid_estimate(setup$Y, setup$N0, setup$T0)
+      tau_hat=synthdid::synthdid_estimate(setup$Y, setup$N0, setup$T0)
       result_matrix[i,2]=as.numeric(tau_hat)
       result_matrix[i,3]=sqrt(vcov(tau_hat, method = "placebo"))
       result_matrix[i,4]=result_matrix[i,2]-(1.96*result_matrix[i,3])
