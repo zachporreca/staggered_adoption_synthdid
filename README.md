@@ -8,6 +8,22 @@ Code to incorporate staggered treatment adoption (based on appendix from Arkhang
 
 This is meant solely for applying synthetic difference-in-difference methods to staggered treatment timing settings
 
+Package can be installed as follows:
+
+```
+devtools::install_github("zachporreca/staggered_adoption_synthdid")
+```
+
+And if you have not already installed the synthdid package:
+```
+devtools::install_github("synth-inference/synthdid")
+```
+
+After installation the package can be called as follows:
+```
+library(staggeredSynthDid)
+```
+
 
 ### This code is still in an early Beta version and has the following issues/ concerns (Help addressing them would be greatly appreciated):
 
