@@ -25,7 +25,7 @@ staggered_synth_DID <-
     state_initial_treat=matrix(nrow=length(unique(data[,unit])), ncol=2)
     state_initial_treat[,1]=unique(data[,unit])
     for (i in 1:nrow(state_initial_treat)){
-      state_initial_treat[i,2]=min(data[which(data[,unit]==state_initial_treat[i,1] & data[,treatment_var]==1),1])
+      state_initial_treat[i,2]=min(data[which(data[,unit]==state_initial_treat[i,1] & data[,treatment_var]==1),time_var])
       state_initial_treat[i,2]=ifelse(state_initial_treat[i,2]=="Inf", 0, state_initial_treat[i,2])
     }
     state_initial_treat=as.data.frame(state_initial_treat)
