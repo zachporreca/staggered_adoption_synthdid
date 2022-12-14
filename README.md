@@ -2,7 +2,7 @@
 
 Original 1/11/22
 
-Most recent update 12/13/22   - Note: Use data frames or matrices, no support ofr tibbles
+Most recent update 12/13/22   
 
 Code to incorporate staggered treatment adoption (based on appendix from Arkhangelsky et al. 2021) into synthdid package
 
@@ -39,6 +39,8 @@ Inputs (aside from data and untreated) are column <b>numbers</b>. The input is o
 staggered_synth_DID(data, untreated, outcome_var,   unit, treatment_var, time_var)
 
 Once again, data refers to the data source's name, untreated refers to the value assigned in the treatment column to untreated units, and the remainder of variables refer to the variable column number. 
+
+Note: Use data frames or matrices, no support for tibbles
 
 
 ##UPDATE
