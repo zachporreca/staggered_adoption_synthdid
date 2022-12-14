@@ -2,7 +2,7 @@
 
 Original 1/11/22
 
-Most recent update 07/28/22
+Most recent update 12/13/22   - Note: Use data frames or matrices, no support ofr tibbles
 
 Code to incorporate staggered treatment adoption (based on appendix from Arkhangelsky et al. 2021) into synthdid package
 
@@ -44,6 +44,7 @@ Once again, data refers to the data source's name, untreated refers to the value
 ##UPDATE
 - Code has been updated with a more correct computation of standard errors based on an influence functions for each observation and cohort. The overall summary parameter's variance, V_theta, is calculated as follows: V_theta=w'Vw where V is calculated as described in [Kahn (2015)](https://j-kahn.com/files/influencefunctions.pdf)
 - An initital treatment period variable is no longer needed as an input (Thanks to [Alex Marsella](https://alexmarsella.github.io/) for the suggestion)
+- Updated to fix a small bug, involving creation of initial treatment variable (updated 12/13/2022)
 
 Author: Zachary Porreca @zachporreca
 
