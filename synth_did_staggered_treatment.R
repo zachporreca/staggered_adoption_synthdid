@@ -109,8 +109,8 @@ for (j in 1:iterations){
     tau_hat=synthdid_estimate(setup$Y, setup$N0, setup$T0)
     result_matrix2[i,2]=as.numeric(tau_hat)
     result_matrix2[i,3]=sqrt(vcov(tau_hat, method = "placebo"))
-    result_matrix2[i,4]=result_matrix[i,2]-(1.96*result_matrix[i,3])
-    result_matrix2[i,5]=result_matrix[i,2]+(1.96*result_matrix[i,3])
+    result_matrix2[i,4]=result_matrix2[i,2]-(1.96*result_matrix2[i,3])
+    result_matrix2[i,5]=result_matrix2[i,2]+(1.96*result_matrix2[i,3])
     result_matrix2[i,6]=nrow(subbed[which(subbed$post_treat==1),])
   }
   B[j,1]=sum(result_matrix2[,6]*result_matrix2[,2])
@@ -132,7 +132,6 @@ print(paste0("SE= ", overall_se))
 print(paste0("p= ", overall_p))
 print(paste0("95% CI: (",lower_95_CI,", ",upper_95_CI,")"))
 print("*p<0.1; **p<0.5, ***p<0.01")
-
 
 
     
