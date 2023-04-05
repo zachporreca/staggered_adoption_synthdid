@@ -83,7 +83,7 @@ for (j in 1:iterations){
   untreated=0
   treated_periods=unique(data2[which(data2[,initial_treat_var]>0), initial_treat_var])
   treated_periods=treated_periods[which(treated_periods>min(data2[,time_var])+1)]
-  result_matrix=matrix(ncol=6, nrow=length(treated_periods))
+  result_matrix2=matrix(ncol=6, nrow=length(treated_periods))
   for (i in 1:length(treated_periods)){
     subbed=data2[which(data2[,initial_treat_var]==treated_periods[i]|data2[,initial_treat_var]==untreated),]
     result_matrix2[i,1]=treated_periods[i]
