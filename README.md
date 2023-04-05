@@ -1,5 +1,7 @@
 ## staggered_adoption_synthdid
 
+UPDATE IN PROGRESS
+
 Original 1/11/22
 
 Most recent update 04/05/23   
