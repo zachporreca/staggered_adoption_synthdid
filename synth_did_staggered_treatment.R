@@ -9,7 +9,8 @@
 #' @param unit Numeric. Column number for variable that identifies each unit
 #' @param treatment_var Numeric. Column number for 0/1 variable. = 1 if unit is 
 #'   treated in that period
-#' @param time_var Numeric. Column number for variable indicating time period. 
+#' @param time_var Numeric. Column number for variable indicating time period.
+#' @param iterations Numeric. Number of bootstrap iterations to employ in calculating standard errors
 #' 
 #' @return Data.frame containing estimates for each treatment_period. Containing
 #'   point estimates, standard error, and confidence intervals.
