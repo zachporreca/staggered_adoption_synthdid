@@ -89,7 +89,7 @@ staggered_synth_DID <-
     V=rnorm(nrow(data), 0, 1)
     variance=(1/((nrow(x)^2)))*(t(influence) %*% influence)
     weights=result_matrix$weight
-    variance=t(weights) %*% weights
+    variance=t(weights) %*% variance %*% weights
     overall_se=sqrt(sqrt(variance^2))       
     overall_t=(overall_estimator/(overall_se/sqrt(nrow(data))))
     overall_p=2*pt(q=sqrt(((overall_estimator/overall_se)^2)), df=(nrow(data)-length(unique(data[,time_var]))-length(unique(data[,unit]))), lower.tail=FALSE)
