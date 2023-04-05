@@ -44,7 +44,7 @@ Note: Use data frames or matrices, no support for tibbles
 
 
 ##UPDATE
-- Standard error calculation has been updated to the bootstrap algorithm suggested by [Clarke et al. 2023](https://arxiv.org/pdf/2301.11859.pdf). Thanks to [Agoston Reguly](https://github.com/regulyagoston) for finding a bug in the variance calculation code which pushed me to finally adopt this method! The bootstrap algorithm comes with a new userinput needed: a number of iterations to employ. 
+- Standard error calculation has been updated to the bootstrap algorithm suggested by [Clarke et al. 2023](https://arxiv.org/pdf/2301.11859.pdf). Thanks to [Agoston Reguly](https://github.com/regulyagoston) for finding a bug in the variance calculation code which pushed me to finally adopt this method. The bootstrap algorithm comes with a new user input needed: a number of iterations to employ. 
 - An initital treatment period variable is no longer needed as an input (Thanks to [Alex Marsella](https://alexmarsella.github.io/) for the suggestion)
 - Updated to fix a small bug, involving creation of initial treatment variable (updated 12/13/2022)
 
