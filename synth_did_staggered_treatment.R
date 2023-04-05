@@ -10,7 +10,7 @@
 #' @param treatment_var Numeric. Column number for 0/1 variable. = 1 if unit is 
 #'   treated in that period
 #' @param time_var Numeric. Column number for variable indicating time period.
-#' @param iterations Numeric. Number of bootstrap iterations to employ in calculating standard errors
+#' @param iterations Numeric. Number of placebo iterations to employ in calculating standard errors
 #' 
 #' @return Data.frame containing estimates for each treatment_period. Containing
 #'   point estimates, standard error, and confidence intervals.
@@ -43,7 +43,8 @@ staggered_synth_DID <-
     initial_treat_var=as.numeric(which(colnames(data)=="initial_treat_var"))
     
     
-   timeNow <- Sys.time()
+attach(data)
+timeNow <- Sys.time()
 data[,treatment_var]=ifelse(data[,treatment_var]==untreated, 0, data[,treatment_var])
 untreated=0
 treated_periods=unique(data[which(data[,initial_treat_var]>0), initial_treat_var])
@@ -76,10 +77,22 @@ result_matrix[,6]=NULL
 
 overall_estimator=sum(result_matrix[,6]*result_matrix[,2])
 #VARIANCE/ SE CALCULATION
-B=vector(mode="numeric", length=iterations)
+B=matrix(ncol=3, nrow=iterations)
+co_sample=sample=data[which(data$initial_treat_period==0),]
+co_sample_units=unique(as.numeric(co_sample[,unit]))
 for (j in 1:iterations){
-  sample=sample(seq(1:nrow(data)), nrow(data), replace = TRUE)
-  data2=data[sample,]
+  placebo_treat_units=matrix(nrow=length(co_sample_units), ncol=2)
+  placebo_treat_units[,1]=co_sample_units
+  number_to_treat=sample(seq(1:(length(co_sample_units)-1)), 1)
+  treat_obs=sample(1:length(co_sample_units), number_to_treat, replace=FALSE)
+  time_periods_sample=sort(unique(co_sample[,time_var]))
+  placebo_treat_units[c(treat_obs),2]=sample(time_periods_sample[c(3:length(time_periods_sample))], length(treat_obs), replace=TRUE)
+  placebo_treat_units[-c(treat_obs),2]=0
+
+  data2=co_sample
+  data2$initial_treat_period=placebo_treat_units[match(as.numeric(data2[,unit]), placebo_treat_units[,1]),2]
+  data2[,treatment_var]=ifelse((data2[,unit] %in% placebo_treat_units) & data2[,time_var] >= data2$initial_treat_period &
+                                 data2$initial_treat_period!=0, 1, 0)
   data2[,treatment_var]=ifelse(data2[,treatment_var]==untreated, 0, data2[,treatment_var])
   untreated=0
   treated_periods=unique(data2[which(data2[,initial_treat_var]>0), initial_treat_var])
@@ -100,11 +113,13 @@ for (j in 1:iterations){
     result_matrix2[i,5]=result_matrix[i,2]+(1.96*result_matrix[i,3])
     result_matrix2[i,6]=nrow(subbed[which(subbed$post_treat==1),])
   }
-  B[j]=sum(result_matrix2[,6]*result_matrix2[,2])
+  B[j,1]=sum(result_matrix2[,6]*result_matrix2[,2])
   cat("\r", round(j*100/(nrow(data)+1), 2), "% done in ", Sys.time() - timeNow, " ... ")
   
 }
-variance=var(B)
+B[,2]=mean(B[,1])
+B[,3]=(B[,1]-B[,2])^2
+variance=mean(B[,3])
 overall_se=sqrt(sqrt(variance^2))          
 overall_t=(overall_estimator/(overall_se/sqrt(nrow(data))))
 overall_p=2*pt(q=sqrt(((overall_estimator/overall_se)^2)), df=(nrow(data)-length(unique(data[,time_var]))-length(unique(data[,unit]))), lower.tail=FALSE)
@@ -117,5 +132,8 @@ print(paste0("SE= ", overall_se))
 print(paste0("p= ", overall_p))
 print(paste0("95% CI: (",lower_95_CI,", ",upper_95_CI,")"))
 print("*p<0.1; **p<0.5, ***p<0.01")
+
+
+
     
   }
