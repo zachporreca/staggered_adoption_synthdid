@@ -2,7 +2,9 @@
 
 Original 1/11/22
 
-Most recent update 04/06/23   PLEASE KEEP AND EYE OUT FOR BUGS WITH NEW UPDATE
+Most recent update 04/06/23   
+
+PLEASE KEEP AND EYE OUT FOR BUGS WITH NEW UPDATE
 
 Code to incorporate staggered treatment adoption (based on appendix from Arkhangelsky et al. 2021) into synthdid package
 
