@@ -181,7 +181,7 @@ staggered_synth_DID <-
                                                                               lambda=lambda[[which(lambda_length==setup$T0)]]))
           
           result_matrix2[i,2]=as.numeric(tau_hat)
-          result_matrix2[i,3]=0
+          result_matrix2[i,3]=NA
           result_matrix2[i,4]=NA
           result_matrix2[i,5]=NA
           result_matrix2[i,6]=nrow(subbed[which(subbed$post_treat==1),])
