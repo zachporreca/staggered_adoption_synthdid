@@ -117,9 +117,9 @@ staggered_synth_DID <-
                                outcome = outcome_var, treatment = "post_treat")
           tau_hat=synthdid_estimate(setup$Y, setup$N0, setup$T0)
           result_matrix2[i,2]=as.numeric(tau_hat)
-          result_matrix2[i,3]=sqrt(vcov(tau_hat, method = "placebo"))
-          result_matrix2[i,4]=result_matrix2[i,2]-(1.96*result_matrix2[i,3])
-          result_matrix2[i,5]=result_matrix2[i,2]+(1.96*result_matrix2[i,3])
+          result_matrix2[i,3]=NA
+          result_matrix2[i,4]=NA
+          result_matrix2[i,5]=NA
           result_matrix2[i,6]=nrow(subbed[which(subbed$post_treat==1),])
         }
         result_matrix2=as.data.frame(result_matrix2)
@@ -181,9 +181,9 @@ staggered_synth_DID <-
                                                                               lambda=lambda[[which(lambda_length==setup$T0)]]))
           
           result_matrix2[i,2]=as.numeric(tau_hat)
-          result_matrix2[i,3]=sqrt(vcov(tau_hat, method = "placebo"))
-          result_matrix2[i,4]=result_matrix2[i,2]-(1.96*result_matrix2[i,3])
-          result_matrix2[i,5]=result_matrix2[i,2]+(1.96*result_matrix2[i,3])
+          result_matrix2[i,3]=0
+          result_matrix2[i,4]=NA
+          result_matrix2[i,5]=NA
           result_matrix2[i,6]=nrow(subbed[which(subbed$post_treat==1),])
         }
       }
