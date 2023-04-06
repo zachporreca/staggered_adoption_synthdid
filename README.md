@@ -8,7 +8,7 @@ Code to incorporate staggered treatment adoption (based on appendix from Arkhang
 
 This is meant solely for applying synthetic difference-in-difference methods to staggered treatment timing settings
   
-Package can be installed as follows: ******THIS IS NOT WORKING AT THE MOMENT, FOR NOW JUST LOAD THE CODE MANUALLY*********
+Package can be installed as follows: *THIS INSTALLATION METHOD IS NOT WORKING AT THE MOMENT, FOR NOW JUST LOAD THE CODE MANUALLY*
 
 ```
 devtools::install_github("zachporreca/staggered_adoption_synthdid")
